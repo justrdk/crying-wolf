@@ -1,0 +1,26 @@
+<head>
+  <title>crying-wolf</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+    <div class="container">
+        {{> diseaseTable}}
+    </div>
+
+</body>
+
+<template name="diseaseTable">
+    <div>
+        <ul>
+            {{#each weeks}}
+                {{#each diseases}}
+                    <li>{{disease}}</li>
+                {{/each}}
+            {{/each}}
+        </ul>
+
+
+    </div>
+</template>
