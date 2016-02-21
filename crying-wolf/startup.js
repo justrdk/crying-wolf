@@ -100,9 +100,7 @@ if (Meteor.isServer) {
         }];
 
         if (Weeks.find().count() === 0) {
-            console.log('here');
             for (let j = 0; j < 50; j++) {
-                console.log('creating week');
                 Weeks.insert({
                     week: j + 1,
                     diseases: diseases
