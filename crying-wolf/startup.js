@@ -1,6 +1,5 @@
 if (Meteor.isServer) {
     Meteor.startup(function () {
-        // code to run on server at startup
         const diseases = [{
             disease: 'Diarreas < 1',
             currentYearAmount: 0,
@@ -100,12 +99,16 @@ if (Meteor.isServer) {
         }];
 
         if (Weeks.find().count() === 0) {
-            for (let j = 0; j < 50; j++) {
+            for (let i = 0; i < 50; i++) {
                 Weeks.insert({
-                    week: j + 1,
+                    week: i + 1,
                     diseases: diseases
                 });
             }
         }
+    });
+
+    Meteor.publish('weeks', () => {
+        return Weeks.find();
     });
 }
