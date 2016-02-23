@@ -41,27 +41,33 @@
     </div>
     <hr>
     <div class="row">
-        <table class="table table-hover">
+        <table class="table table-hover week-table">
+            {{#with selectedWeek}}
             <thead>
                 <tr>
                     <th>Enfermedades de Notificacion Obligatoria</th>
-                    <th>Año Actual. Semana No:</th>
-                    <th>Año Anterior. Semana No:</th>
+                    <th>Semana No: {{week}} <br/> Año Actual</th>
+                    <th>Semana No: {{week}} <br/> Año Anterior</th>
                     <th>Año Actual Acumulado</th>
                     <th>Año Anterior Acumulado</th>
                 </tr>
             </thead>
             <tbody>
-                {{#each selectedWeek.diseases}}
-                <tr>
-                    <td>{{disease}}</td>
-                    <td>{{currentYearAmount}}</td>
-                    <td>{{lastYearAmount}}</td>
-                    <td>{{collectedCurrentYear}}</td>
-                    <td>{{collectedLastYear}}</td>
-                </tr>
+                {{#each diseases}}
+                    {{> diseaseTableRows}}
                 {{/each}}
             </tbody>
+            {{/with}}
         </table>
     </div>
+</template>
+
+<template name="diseaseTableRows">
+        <tr id="{{../_id}}">
+            <td>{{disease}}</td>
+            <td><input type="text" class="form-control current-year-amount" value="{{currentYearAmount}}"></td>
+            <td><input type="text" class="form-control last-year-amount" value="{{lastYearAmount}}"></td>
+            <td><input type="text" class="form-control collected-current-year" value="{{collectedCurrentYear}}"></td>
+            <td><input type="text" class="form-control collected-last-year" value="{{collectedLastYear}}"></td>
+        </tr>
 </template>
