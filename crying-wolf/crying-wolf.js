@@ -2,6 +2,18 @@ if (Meteor.isClient) {
 
 	Meteor.subscribe('weeks');
 
+	Accounts.ui.config({
+		passwordSignupFields: 'USERNAME_ONLY'
+	});
+
+	Template.body.helpers({
+		correctUser: function() {
+			if (Meteor.user() && Meteor.user().username === 'kdiaz') {
+				return true;
+			}
+			return false;
+		}
+	});
 	Template.main.created = function() {
 		this.selectedWeek = new ReactiveVar({});
 		this.pastWeeks = new ReactiveVar([]);
@@ -24,12 +36,14 @@ if (Meteor.isClient) {
 		'change #week-list': (ev, template) => {
 			let selectedWeek = parseInt($(ev.target).val(), 10);
 			const week = Weeks.findOne({
-				week: selectedWeek
+				week: selectedWeek,
+				username: Meteor.user().username
 			});
 			const pastWeeks = Weeks.find({
 				week: {
 					$lt: selectedWeek
-				}
+				},
+				username: Meteor.user().username
 			}).map((val) => {
 				return val.diseases;
 			});

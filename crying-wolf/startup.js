@@ -102,7 +102,8 @@ if (Meteor.isServer) {
             for (let i = 0; i < 50; i++) {
                 Weeks.insert({
                     week: i + 1,
-                    diseases: diseases
+                    diseases: diseases,
+                    username: 'kdiaz'
                 });
             }
         }

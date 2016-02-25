@@ -20,3 +20,5 @@ twbs:bootstrap
 reactive-var
 rajit:bootstrap3-datepicker
 manuel:viewmodel
+accounts-ui
+accounts-password
