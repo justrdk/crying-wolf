@@ -20,7 +20,7 @@
                     <select id="week-list">
                         <option value="">Escoga una semana</option>
                         {{#each weekOptions}}
-                            <option value="{{week}}">{{week}}</option>
+                            <option value="{{.}}">{{.}}</option>
                         {{/each}}
                     </select>
                 </div>
@@ -63,11 +63,11 @@
 </template>
 
 <template name="diseaseTableRows">
-        <tr id="{{../_id}}">
+        <tr>
             <td>{{disease}}</td>
             <td><input type="text" class="form-control current-year-amount" value="{{currentYearAmount}}"></td>
             <td><input type="text" class="form-control last-year-amount" value="{{lastYearAmount}}"></td>
-            <td><input type="text" class="form-control collected-current-year" value="{{collectedCurrentYear}}"></td>
-            <td><input type="text" class="form-control collected-last-year" value="{{collectedLastYear}}"></td>
+            <td><label>{{collectedCurrentYear}}</label></td>
+            <td><label>{{collectedLastYear}}</label></td>
         </tr>
 </template>
